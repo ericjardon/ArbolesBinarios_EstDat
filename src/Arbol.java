@@ -38,7 +38,6 @@ public class Arbol<T extends Comparable<T>>
         System.out.println("borrar" + e);
         raiz = removeRec(raiz, e);
     }
-
     public Nodo<T> removeRec(Nodo<T> nodoPadre, T e) {
         // Recursivo que regresa el nodo raíz (nodopadre) que sustituirá el nodo a eliminar.
         // A) Si nodo a eliminar es una hoja, simplemente la quitamos regresando null.
@@ -145,7 +144,6 @@ public class Arbol<T extends Comparable<T>>
             recorrePreorden(nodo.getDerecho());     // 3. recorre lado derecho
         }
     }
-
     public void recorrePostorden(){
         recorrePostorden(this.raiz);
     }
@@ -156,7 +154,18 @@ public class Arbol<T extends Comparable<T>>
             System.out.print(nodo.getElemento() + ",");
         }
     }
+    public void recorreReversa() {
+        recorreReversa(this.raiz);
+    }
+    public void recorreReversa(Nodo<T> nodo) {
+        if (nodo!=null) {
+            System.out.print(nodo.getElemento() + ",");   // 1. visita raíz
+            recorreReversa(nodo.getDerecho());  // 2. visita derecho
+            recorreReversa(nodo.getIzquierdo());    // 3. visita izquierdo.
+        }
+    }
 
+    // ------------------- OTROS MÉTODOS -------------------//
     public int getHeight() {
         return getHeight(raiz);
     }
